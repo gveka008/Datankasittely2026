@@ -32,3 +32,6 @@ def fetch_and_store_users():
     session.commit()
     session.close()
     print("Users inserted into database.")
+
+if __name__ == "__main__":
+    fetch_and_store_users()
