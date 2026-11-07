@@ -1,4 +1,5 @@
 def mask (users):
+    #Mask phone  in data
     masked_users=[] 
     for user in users:
         u_copy = user.copy()

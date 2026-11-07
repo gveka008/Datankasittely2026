@@ -1,4 +1,5 @@
 def anonymize (users):
+    #Anonymize name in data
     anonymized_users=[] 
     for user in users:
         u_copy = user.copy()

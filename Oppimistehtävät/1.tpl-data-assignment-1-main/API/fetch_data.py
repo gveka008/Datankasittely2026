@@ -4,17 +4,20 @@ from sqlalchemy.orm import sessionmaker
 from Database.models import User
 from configuration import DATABASE_URL, API_URL
 
+#Create database engine and session
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
 
 #Mallia alembic exercise main
 
 def fetch_and_store_users():
+    #Fetch users from api and store to db
     response = requests.get(API_URL)
     users = response.json()
 
     session = SessionLocal()
     for u in users:
+        #Create user instance
         user = User(
             id=u["id"],
             name=u["name"],

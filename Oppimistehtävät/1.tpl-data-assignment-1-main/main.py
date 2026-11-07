@@ -8,14 +8,16 @@ from Data_analysis.analysis import analyze_data
 from Data_protection.anonymize import anonymize
 from Data_protection.masking import mask
 
+#Create database engine and session
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
 
 def main():
     print("Pipeline starts")
+    #Fetch and store users from API
     print("Fetching and storing users")
     fetch_and_store_users()
-
+    #Retrieve users from database and process them
     print("Data from db and anonymizing & masking")
     session=SessionLocal()
     db_users=session.query(User).all()
@@ -34,6 +36,7 @@ def main():
     ]
     anonymized_users = anonymize(users_list)
     fully_processed_users = mask(anonymized_users)
+    #Further processing done, ready for analysis
     print("Pandas analyze")
     analyze_data(fully_processed_users)
     print("Pipeline done")

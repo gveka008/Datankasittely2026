@@ -3,8 +3,10 @@ from sqlalchemy.orm import declarative_base
 
 #Mallia alembic exercise main
 
+#Define base class for models
 Base = declarative_base()
 
+#Define user model
 class User(Base):
     __tablename__ = "users"
 
